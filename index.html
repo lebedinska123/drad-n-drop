@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="main.css">
+    <title>Drag-and-Drop Tasks</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="project-title">
+            GitLab на минималках
+        </h1>
+
+        <div class="task-columns-group">
+            <div class="task-column">
+                <div class="task-column__header task-column__header_todo">
+                    <h3 class="task-column__title">TODO</h3>
+                </div>
+                <div class="task-column__tasks">
+                    <div class="task task-column__task" draggable="true">
+                        <h5 class="task__title">Create Drag-and-Drop app</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="task-column">
+                <div class="task-column__header task-column__header_in-progress">
+                    <h3 class="task-column__title">In progress</h3>
+                </div>
+                <div class="task-column__tasks"></div>
+            </div>
+            <div class="task-column">
+                <div class="task-column__header task-column__header_code-review">
+                    <h3 class="task-column__title">Code Review</h3>
+                </div>
+                <div class="task-column__tasks"></div>
+            </div>
+            <div class="task-column">
+                <div class="task-column__header task-column__header_fixme">
+                    <h3 class="task-column__title">Fixme</h3>
+                </div>
+                <div class="task-column__tasks"></div>
+            </div>
+            <div class="task-column">
+                <div class="task-column__header task-column__header_done">
+                    <h3 class="task-column__title">Done</h3>
+                </div>
+                <div class="task-column__tasks"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js" type="text/javascript"></script>
+</body>
+</html>

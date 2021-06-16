@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Noto Sans JP', sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 50px;
+    box-sizing: border-box;
+    width: 80%;
+    height: 100vh;
+}
+
+.task-columns-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-title {
+    text-align: center;
+}
+
+.task-column {
+    height: 80%;
+    overflow: hidden;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.task-column__header {
+    padding: 1px 10px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 20px 0; 
+    border: 1px solid gray;
+}
+
+.task-column__header_active {
+    background-color: #E7E7E7;
+}
+
+.task-column__header_in-progress {
+    color: green;
+    border-color: green;
+}
+
+.task-column__header_code-review {
+    color: orange;
+    border-color: orange;
+}
+
+.task-column__header_fixme {
+    color: red;
+    border-color: red;
+}
+
+.task-column__header_done {
+    color: blue;
+    border-color: blue;
+}
+
+.task-column__tasks {
+    overflow-y: auto;
+    height: 70vh;
+}
+
+.task {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.task:hover {
+    cursor: pointer;
+}
