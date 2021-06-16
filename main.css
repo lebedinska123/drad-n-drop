@@ -76,6 +76,14 @@ body {
     border-radius: 10px;
 }
 
+.task_hide {
+    display: none;
+}
+
+.task_active {
+    background-color: #E7E7E7;
+}
+
 .task:hover {
     cursor: pointer;
 }

@@ -1,43 +1,72 @@
 
+const ClassNames = {
+    task: 'task',
+    taskHide: 'task_hide',
+    taskActive: 'task_active',
+    taskColumn: 'task-column',
+    taskHeader: 'task-column__header',
+    taskHeaderActive: 'task-column__header_active',
+};
+
+const Selector = {
+    task: `.${ClassNames.task}`,
+    taskHide: `.${ClassNames.taskHide}`,
+    taskHeader: `.${ClassNames.taskHeader}`,
+    taskHeaderActive: `.${ClassNames.taskHeaderActive}`,
+};
+
+let currentTaskElement = undefined;
+
 function addEventListeners() {
-    let allTasks = document.querySelectorAll('.task');
+    let allTasks = document.querySelectorAll(Selector.task);
 
     allTasks.forEach(task => {
-        task.addEventListener('dragstart', () => console.log('adfdsf'));
+        task.addEventListener('dragstart', onDragstart);
         task.addEventListener('dragend', onDragend);
     });
 
     let taskColumns = document.querySelectorAll('.task-column');
 
     taskColumns.forEach(column => {
-        column.addEventListener('dragover', onDragover);
         column.addEventListener('dragenter', onDragenter);
         column.addEventListener('dragleave', onDragleave);
-        column.addEventListener('drag', onDrag);
+        column.addEventListener('dragover', onDragover);
+        column.addEventListener('drop', onDrop);
     });
 }
 
-function onDragend(event) {
-    
-}
-
 function onDragstart(event) {
-    
+    event.target.classList.add(ClassNames.taskActive);
+
+    setTimeout(() => {
+        event.target.classList.add(ClassNames.taskHide);
+    }, 0);
+
+    currentTaskElement = event.target;
 }
 
-function onDragover(event) {
+function onDragend(event) {
+    event.target.classList.remove(ClassNames.taskActive, ClassNames.taskHide);
+    currentTaskElement = undefined;
 }
 
 function onDragenter(event) {
-    event.target.parentElement.querySelector('.task-column__header').classList.add('task-column__header_active');
+    event.target.parentElement.querySelector(Selector.taskHeader).classList.add(ClassNames.taskHeaderActive);
 }
 
 function onDragleave(event) {
-    event.target.parentElement.querySelector('.task-column__header').classList.remove('task-column__header_active');    
+    event.target.parentElement.querySelector(Selector.taskHeader).classList.remove(ClassNames.taskHeaderActive);
 }
 
-function onDrag(event) {
-    
+function onDragover(event) {
+    event.preventDefault();
+}
+
+function onDrop(event) {
+    if (currentTaskElement !== undefined) {
+        event.target.append(currentTaskElement);
+        currentTaskElement = undefined;
+    }
 }
 
 addEventListeners();
